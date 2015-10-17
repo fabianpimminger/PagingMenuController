@@ -269,7 +269,11 @@ class MenuView: UIScrollView {
         menuItemViews.forEach { $0.focusLabel(menuItemViews.indexOf($0) == currentPage) }
 
         // make selected item foreground
-        sortedMenuItemViews.forEach { $0.layer.zPosition = menuItemViews.indexOf($0) == currentPage ? 0 : -1 }
+        if case .RoundRect(_, _, _, _) = options.menuItemMode {
+            
+        }else{
+            sortedMenuItemViews.forEach { $0.layer.zPosition = menuItemViews.indexOf($0) == currentPage ? 0 : -1 }
+        }
         
         setNeedsLayout()
         layoutIfNeeded()
